@@ -1,23 +1,17 @@
 /* eslint-disable prettier/prettier */
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
-import { carregaProdutores } from '../../../Servicos/carregarDados'; 
+// import { carregaProdutores } from '../../../Servicos/carregarDados'; 
 import Produtor from './Produtor';
+import { useProdutores } from '../../../hooks/useProdutores';
 
 const Produtores = ({ topo: Topo}) =>{
-    const [title, setTitle] = useState('');
-    const [lista, setLista] = useState([]);
+    const [titulo, lista] = useProdutores();
 
-    useEffect(() =>{
-        const retorno = carregaProdutores();
-        setTitle(retorno.title);
-        setLista(retorno.lista);
-    }, [])
-    
     const TopoLista = () =>{
         return <>
             <Topo/>
-            <Text style={estilos.titulo}>{title}</Text>
+            <Text style={estilos.titulo}>{titulo}</Text>
         </>
     }
 
