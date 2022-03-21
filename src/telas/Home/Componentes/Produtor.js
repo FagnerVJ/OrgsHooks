@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import Estrelas from '../../../componentes/estrelas';
+import Estrelas from '../../../componentes/Estrelas';
 
 const Produtor = ({nome, imagem, distancia, estrelas}) =>{
     const [ selecionado, setSelecionado ] = useState(false);

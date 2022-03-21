@@ -1,18 +1,24 @@
 /* eslint-disable prettier/prettier */
 //https://reactnative.dev/docs/touchableopacity
 import React, { useState } from 'react';
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Estrela from './Estrela';
 
 
 const Estrelas = ({ quantidade: quantidadeAntiga, editavel = false, grande = false }) =>{
 
     const [ quantidade, setQuantidade] = useState(quantidadeAntiga);
-    const estilos = estilosFuncao(grande);
     const RenderEstrelas = () =>{
         const listaEstrelas = [];
         for (let i = 0; i < 5; i++){
             listaEstrelas.push(
-            
+            <Estrela
+                key={i}
+                onPress={() => {setQuantidade(i + 1)}}
+                desabilitada={!editavel}
+                preenchida={i < quantidade}
+                grande={grande}
+            />
         );
         }
         return listaEstrelas;
@@ -22,15 +28,9 @@ const Estrelas = ({ quantidade: quantidadeAntiga, editavel = false, grande = fal
     </View>
     )
 }
-
-const estilosFuncao = (grande) => StyleSheet.create({
+const estilos = StyleSheet.create({
     estrelas:{
         flexDirection: 'row',
     },
-    estrela:{
-        width: grande ? 36 : 12,
-        height: grande ? 36 : 12,
-        marginRight: 2,
-    }
 })
-export default Estrelas;
+export default Estrelas ;

@@ -6,15 +6,18 @@ import estrela from '../../assets/images/estrela.png';
 import estrelaCinza from '../../assets/images/estrelaCinza.png' 
 
 // eslint-disable-next-line prettier/prettier
-const Estrela = ({ 
-    onPress, 
-    desabilitada,
-    preenchida, 
+
+const Estrela = ({
+    onPress,
+    desabilitada=true,
+    grande=false,
+    preenchida,
 }) => {
+    const estilos = estilosFuncao(grande);
     const getImagem = () =>{
         if (preenchida){
             return estrela;
-        } 
+        }
         return estrelaCinza;
     }
 
@@ -22,17 +25,15 @@ const Estrela = ({
         onPress={onPress}
         disabled={desabilitada}
     >
-        <Image source={getImagem()} style={estilos.estrela} />
+        <Image
+            source={getImagem()}
+            style={estilos.estrela} />
     </TouchableOpacity>
 
 }
-
 export default Estrela;
 
-const estilos = (grande) => StyleSheet.create({
-    estrelas:{
-        flexDirection: 'row',
-    },
+const estilosFuncao = (grande) => StyleSheet.create({
     estrela:{
         width: grande ? 36 : 12,
         height: grande ? 36 : 12,
