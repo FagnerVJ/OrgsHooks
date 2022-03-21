@@ -23,14 +23,14 @@ const Estrelas = ({ quantidade: quantidadeAntiga, editavel = false, grande = fal
         }
         return listaEstrelas;
     };
-    return(<View style={estilos.estrelas}>
+    return (<View style={estilos.estrelas}>
         <RenderEstrelas />
     </View>
-    )
-}
+    );
+};
 const estilos = StyleSheet.create({
     estrelas:{
         flexDirection: 'row',
     },
-})
-export default Estrelas ;
+});
+export default Estrelas;

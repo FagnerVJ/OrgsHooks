@@ -19,7 +19,7 @@ const Produtores = ({ topo: Topo}) =>{
             <FlatList
                 data={lista}
                 ListHeaderComponent={() =>  TopoLista()}
-                keyExtractor={({nome}) => { nome }}
+                keyExtractor={({nome}) => {nome}}
                 renderItem={({item}) => <Produtor {...item} />}
             />
         </>

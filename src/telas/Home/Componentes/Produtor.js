@@ -1,17 +1,34 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+//https://pt-br.reactjs.org/docs/hooks-reference.html#usereducer
+//https://pt-br.reactjs.org/docs/hooks-reference.html#usememo
+
+import React, { useState, useReducer, useMemo } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Estrelas from '../../../componentes/Estrelas';
 
-const Produtor = ({nome, imagem, distancia, estrelas}) =>{
-    const [ selecionado, setSelecionado ] = useState(false);
+const distanciaEmMetros = (distancia) =>{
+    console.log(distanciaEmMetros);
+    return `${distancia}m`; 
+}
 
-    return(<TouchableOpacity 
+const Produtor = ({nome, imagem, distancia, estrelas}) =>{
+    //const [ selecionado, setSelecionado ] = useState(false);
+    const [ selecionado, inverterSelecionado] = useReducer(
+        (selecionado) => !selecionado,
+        false
+    );
+
+    const distanciaTexto = useMemo(
+        () => distanciaEmMetros(distancia),
+        [distancia]
+    );
+
+    return(<TouchableOpacity
         style= {estilos.cartao}
-        onPress={()=> setSelecionado(!selecionado)}>
-        
+        onPress={inverterSelecionado}>
+
         <Image source={ imagem } style={estilos.imagem} accessibilityLabel={nome}/>
-        <View style={estilos.informacoes}> 
+        <View style={estilos.informacoes}>
         <View>
                 <Text style={estilos.nome}>{ nome }</Text>
                 <Estrelas quantidade={estrelas}
@@ -19,7 +36,7 @@ const Produtor = ({nome, imagem, distancia, estrelas}) =>{
                 grande={selecionado}
                 />
             </View>
-                <Text style={estilos.distancia}> { distancia } </Text>
+                <Text style={estilos.distancia}> { distanciaTexto } </Text>
             </View>
         </TouchableOpacity>
     )
