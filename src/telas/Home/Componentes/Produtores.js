@@ -12,10 +12,10 @@ const Produtores = ({ topo: Topo}) =>{
         return <>
             <Topo/>
             <Text style={estilos.titulo}>{titulo}</Text>
-        </>
-    }
+        </>;
+    };
 
-    return(<>
+    return (<>
             <FlatList
                 data={lista}
                 ListHeaderComponent={() =>  TopoLista()}
@@ -24,7 +24,7 @@ const Produtores = ({ topo: Topo}) =>{
             />
         </>
     );
-}
+};
 export default Produtores;
 
 const estilos = StyleSheet.create({
@@ -36,8 +36,7 @@ const estilos = StyleSheet.create({
         fontWeight: 'bold',
         color: '#464646',
     }
-
-})
+});
 
 // O useEffect tem dois parametros 
 // 1º parametro é uma função do a gente quer executar no caso um metodo 
